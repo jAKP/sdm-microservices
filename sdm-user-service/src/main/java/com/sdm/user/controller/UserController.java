@@ -43,7 +43,6 @@ public class UserController {
 
 	@RequestMapping(value = "/users/{username}", method = RequestMethod.GET)
 	public User findByUsername(@PathVariable(value = "username") String username) {
-		logger.info("####### UserController ## findByName ## username = " + username);
 		return userRepository.findOne(Example.of(new User.UserBuilder(username, null).build()));
 	}
 

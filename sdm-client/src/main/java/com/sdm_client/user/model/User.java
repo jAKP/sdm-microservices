@@ -4,9 +4,7 @@ import java.io.Serializable;
 import java.util.Set;
 
 public class User implements Serializable {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private Long id;
 	private String username;
@@ -55,7 +53,7 @@ public class User implements Serializable {
 	}
 
 	private User() {
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public Long getId() {

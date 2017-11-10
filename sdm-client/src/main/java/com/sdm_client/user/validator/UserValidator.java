@@ -1,5 +1,7 @@
 package com.sdm_client.user.validator;
 
+import java.util.regex.Pattern;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
@@ -32,10 +34,10 @@ public class UserValidator implements Validator {
 			errors.rejectValue("username", "Duplicate.userForm.username");
 		}
 		
-//		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "NotEmpty");
-//		if (user.getEmail().length() < 4 || Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE).matcher(user.getEmail()).find()) {
-//			errors.rejectValue("email", "Valid.userForm.email");
-//		}
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "NotEmpty");
+		if (user.getEmail().length() < 4 || Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE).matcher(user.getEmail()).find()) {
+			errors.rejectValue("email", "Valid.userForm.email");
+		}
 //		if (userRepository.findByEmail(user.getEmail()) != null) {
 //			errors.rejectValue("email", "Duplicate.userForm.email");
 //		}
