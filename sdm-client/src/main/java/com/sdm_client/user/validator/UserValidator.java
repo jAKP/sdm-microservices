@@ -11,6 +11,7 @@ import com.sdm_client.user.repository.UserRepository;
 
 @Component
 public class UserValidator implements Validator {
+	
 	@Autowired
 	private UserRepository userRepository;
 
@@ -30,6 +31,14 @@ public class UserValidator implements Validator {
 		if (userRepository.findByUsername(user.getUsername()) != null) {
 			errors.rejectValue("username", "Duplicate.userForm.username");
 		}
+		
+//		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "NotEmpty");
+//		if (user.getEmail().length() < 4 || Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE).matcher(user.getEmail()).find()) {
+//			errors.rejectValue("email", "Valid.userForm.email");
+//		}
+//		if (userRepository.findByEmail(user.getEmail()) != null) {
+//			errors.rejectValue("email", "Duplicate.userForm.email");
+//		}
 
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotEmpty");
 		if (user.getPassword().length() < 8 || user.getPassword().length() > 32) {

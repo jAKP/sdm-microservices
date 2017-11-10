@@ -28,7 +28,6 @@ public class RemoteUserRepository implements UserRepository {
 
 	@Override
 	public User findByUsername(String username) {
-		logger.info("####### RemoteUserRepository ## findByUsername ##");
 		return restTemplate.getForObject(serviceUrl + "/users/{username}", User.class, username);
 	}
 
@@ -40,15 +39,7 @@ public class RemoteUserRepository implements UserRepository {
 
 	@Override
 	public User save(User user) {
-		logger.info("####### RemoteUserRepository ## save ##");
 		return restTemplate.postForObject(serviceUrl + "/users", user, User.class);
 	}
-
-	// @Override
-	// public User findByEmail(String email) {
-	// logger.info("####### UserController ## findByEmail ##");
-	// return restTemplate.getForObject(serviceUrl + "/users/{email}", User.class,
-	// email);
-	// }
 
 }

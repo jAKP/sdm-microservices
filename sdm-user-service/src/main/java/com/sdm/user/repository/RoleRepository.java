@@ -10,8 +10,6 @@ import com.sdm.user.model.Role;
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Long> {
 
-//public interface RoleRepository{
-
 	List<Role> findAll();
 
 }

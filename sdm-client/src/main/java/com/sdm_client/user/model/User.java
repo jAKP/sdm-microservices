@@ -10,17 +10,51 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Long id;
 	private String username;
+	private String email;
 	private String password;
 	private String passwordConfirm;
 	private Set<Role> roles;
 
-	public User(long id, String username, String password) {
-		this.id = id;
-		this.username = username;
-		this.password = password;
+	private User(UserBuilder builder) {
+		this.id = builder.id;
+		this.username = builder.username;
+		this.email = builder.email;
+		this.password = builder.password;
 	}
 
-	public User() {
+	public static class UserBuilder {
+		private Long id;
+		private String username;
+		private String email;
+		private String password;
+
+		public UserBuilder(String username, String email) {
+			this.username = username;
+			this.email = email;
+		}
+
+		public UserBuilder id(long id) {
+			this.id = id;
+			return this;
+		}
+
+		public UserBuilder username(String username) {
+			this.username = username;
+			return this;
+		}
+
+		public UserBuilder email(String email) {
+			this.email = email;
+			return this;
+		}
+
+		public User build() {
+			return new User(this);
+		}
+
+	}
+
+	private User() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -62,5 +96,13 @@ public class User implements Serializable {
 
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }
