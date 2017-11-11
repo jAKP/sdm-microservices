@@ -1,1 +1,1 @@
-# sdm-microservices
+# static data manager
