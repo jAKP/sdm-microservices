@@ -1,40 +1,39 @@
 package com.sdm.user.model;
 
 import java.io.Serializable;
-import java.util.Set;
+//import java.util.Set;
+import java.math.BigInteger;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+//import javax.persistence.Entity;
+//import javax.persistence.GeneratedValue;
+//import javax.persistence.GenerationType;
+import org.springframework.data.annotation.Id;
+//import javax.persistence.ManyToMany;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
-public class Role implements Serializable{
-	/**
-	 * 
-	 */
+@Document
+public class Role implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private Long id;
+	private BigInteger id;
 	private String name;
-	private Set<User> users;
+//	private Set<User> users;
 
-	public Role(long id, String name) {
+	public Role(BigInteger id, String name) {
 		this.id = id;
 		this.name = name;
 	}
-	
+
 	public Role() {
-		
+
 	}
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	public Long getId() {
+	// @GeneratedValue(strategy = GenerationType.AUTO)
+	public BigInteger getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(BigInteger id) {
 		this.id = id;
 	}
 
@@ -46,12 +45,13 @@ public class Role implements Serializable{
 		this.name = name;
 	}
 
-	@ManyToMany(mappedBy = "roles")
-	public Set<User> getUsers() {
-		return users;
-	}
+//	// @ManyToMany(mappedBy = "roles")
+//	public Set<User> getUsers() {
+//		return users;
+//	}
+//
+//	public void setUsers(Set<User> users) {
+//		this.users = users;
+//	}
 
-	public void setUsers(Set<User> users) {
-		this.users = users;
-	}
 }

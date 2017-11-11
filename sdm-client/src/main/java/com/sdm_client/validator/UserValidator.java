@@ -1,4 +1,4 @@
-package com.sdm_client.user.validator;
+package com.sdm_client.validator;
 
 import java.util.regex.Pattern;
 
@@ -8,8 +8,8 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import com.sdm_client.user.model.User;
-import com.sdm_client.user.repository.UserRepository;
+import com.sdm_client.model.User;
+import com.sdm_client.repository.UserRepository;
 
 @Component
 public class UserValidator implements Validator {

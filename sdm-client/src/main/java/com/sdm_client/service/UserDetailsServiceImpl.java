@@ -1,4 +1,4 @@
-package com.sdm_client.user.service;
+package com.sdm_client.service;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,9 +12,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.sdm_client.user.model.Role;
-import com.sdm_client.user.model.User;
-import com.sdm_client.user.repository.UserRepository;
+import com.sdm_client.model.Role;
+import com.sdm_client.model.User;
+import com.sdm_client.repository.UserRepository;
 
 @Component
 public class UserDetailsServiceImpl implements UserDetailsService {

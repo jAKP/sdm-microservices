@@ -1,4 +1,4 @@
-package com.sdm_client.user.repository;
+package com.sdm_client.repository;
 
 import java.util.Arrays;
 import java.util.List;
@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.client.RestTemplate;
 
-import com.sdm_client.user.model.User;
+import com.sdm_client.model.User;
 
 /**
  * @author Alok.Pandey

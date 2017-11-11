@@ -1,4 +1,4 @@
-package com.sdm_client.user.repository;
+package com.sdm_client.repository;
 
 import java.util.Arrays;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.client.RestTemplate;
 
-import com.sdm_client.user.model.Role;
+import com.sdm_client.model.Role;
 
 /**
  * @author Alok.Pandey
@@ -21,7 +21,6 @@ public class RemoteRoleRepository implements RoleRepository {
 
 	public RemoteRoleRepository(String serviceUrl) {
 		this.serviceUrl = serviceUrl.startsWith("http") ? serviceUrl : "http://" + serviceUrl;
-		System.out.println("serviceUrl: " + serviceUrl);
 	}
 
 	@Override

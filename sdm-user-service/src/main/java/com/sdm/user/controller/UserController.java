@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sdm.user.model.User;
@@ -22,6 +20,7 @@ import com.sdm.user.repository.UserRepository;
 
 @RestController
 public class UserController {
+
 	protected Logger logger = Logger.getLogger(UserController.class.getName());
 
 	@Autowired
@@ -41,7 +40,7 @@ public class UserController {
 		return users.toArray(new User[users.size()]);
 	}
 
-	@RequestMapping(value = "/users/{username}", method = RequestMethod.GET)
+	@GetMapping("/users/{username}")
 	public User findByUsername(@PathVariable(value = "username") String username) {
 		return userRepository.findOne(Example.of(new User.UserBuilder(username, null).build()));
 	}

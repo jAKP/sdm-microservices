@@ -1,8 +1,8 @@
-package com.sdm_client.user.repository;
+package com.sdm_client.repository;
 
 import java.util.List;
 
-import com.sdm_client.user.model.Role;
+import com.sdm_client.model.Role;
 
 public interface RoleRepository {
 

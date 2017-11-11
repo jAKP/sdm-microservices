@@ -1,22 +1,21 @@
 package com.sdm.user.model;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Transient;
+//import javax.persistence.GeneratedValue;
+//import javax.persistence.GenerationType;
+//import javax.persistence.Transient;
 
-@Entity
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private Long id;
+	private BigInteger id;
 	private String username;
 	private String password;
 	private String email;
@@ -33,9 +32,9 @@ public class User implements Serializable {
 		this.email = builder.email;
 		this.password = builder.password;
 	}
-	
+
 	public static class UserBuilder {
-		private Long id;
+		private BigInteger id;
 		private String username;
 		private String email;
 		private String password;
@@ -45,7 +44,7 @@ public class User implements Serializable {
 			this.email = email;
 		}
 
-		public UserBuilder id(long id) {
+		public UserBuilder id(BigInteger id) {
 			this.id = id;
 			return this;
 		}
@@ -67,12 +66,12 @@ public class User implements Serializable {
 	}
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	public Long getId() {
+	// @GeneratedValue(strategy = GenerationType.AUTO)
+	public BigInteger getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(BigInteger id) {
 		this.id = id;
 	}
 
@@ -92,7 +91,7 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	@Transient
+	// @Transient
 	public String getPasswordConfirm() {
 		return passwordConfirm;
 	}
@@ -101,8 +100,9 @@ public class User implements Serializable {
 		this.passwordConfirm = passwordConfirm;
 	}
 
-	@ManyToMany
-	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+	// @ManyToMany
+	// @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
+	// inverseJoinColumns = @JoinColumn(name = "role_id"))
 	public Set<Role> getRoles() {
 		return roles;
 	}

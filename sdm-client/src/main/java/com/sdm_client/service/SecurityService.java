@@ -1,4 +1,4 @@
-package com.sdm_client.user.service;
+package com.sdm_client.service;
 
 public interface SecurityService {
 

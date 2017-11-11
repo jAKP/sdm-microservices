@@ -1,20 +1,20 @@
-package com.sdm_client.user.controller;
+package com.sdm_client.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.PostMapping;
 
-import com.sdm_client.user.model.User;
-import com.sdm_client.user.repository.UserRepository;
-import com.sdm_client.user.service.SecurityService;
-import com.sdm_client.user.validator.UserValidator;
+import com.sdm_client.model.User;
+import com.sdm_client.repository.UserRepository;
+import com.sdm_client.service.SecurityService;
+import com.sdm_client.validator.UserValidator;
 
 @Controller
-public class UserController {
+public class WebController {
 	@Autowired
 	private UserRepository userRepository;
 
@@ -24,13 +24,13 @@ public class UserController {
 	@Autowired
 	private UserValidator userValidator;
 
-	@RequestMapping(value = "/registration", method = RequestMethod.GET)
+	@GetMapping("/registration")
 	public String registration(Model model) {
 		model.addAttribute("userForm", new User.UserBuilder(null, null).build());
 		return "registration";
 	}
 
-	@RequestMapping(value = "/registration", method = RequestMethod.POST)
+	@PostMapping(value = "/registration")
 	public String registration(@ModelAttribute("userForm") User user, BindingResult bindingResult, Model model) {
 		userValidator.validate(user, bindingResult);
 		if (bindingResult.hasErrors()) {
@@ -41,7 +41,7 @@ public class UserController {
 		return "redirect:/welcome";
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@GetMapping("/login")
 	public String login(Model model, String error, String logout) {
 		if (error != null) {
 			model.addAttribute("error", "Your username and password is invalid.");
@@ -52,7 +52,7 @@ public class UserController {
 		return "login";
 	}
 
-	@RequestMapping(value = { "/", "/welcome" }, method = RequestMethod.GET)
+	@GetMapping({ "/", "/welcome" })
 	public String welcome(Model model) {
 		return "welcome";
 	}

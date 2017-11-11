@@ -1,4 +1,4 @@
-package com.sdm.user;
+package com.sdm.config;
 
 import static org.junit.Assert.assertNotNull;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
@@ -22,18 +22,17 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.sdm.user.model.Role;
-import com.sdm.user.model.User;
-import com.sdm.user.repository.RoleRepository;
-import com.sdm.user.repository.UserRepository;
+import com.sdm.config.model.Config;
+import com.sdm.config.model.Group;
+import com.sdm.config.repository.ConfigRepository;
 
 /**
  * @author Josh Long
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = SDMUserServiceApplication.class)
+@SpringBootTest(classes = SDMConfigServiceApplication.class)
 @WebAppConfiguration
-public class UserRestControllerTest {
+public class ConfigRestControllerTest {
 
 	private MediaType contentType = new MediaType(MediaType.APPLICATION_JSON.getType(),
 			MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));
@@ -44,20 +43,20 @@ public class UserRestControllerTest {
 
 	private HttpMessageConverter mappingJackson2HttpMessageConverter;
 
-	private User user;
+	private Config config;
 
-	private Role role;
+	private Group group;
 
-	private List<User> userList = new ArrayList<>();
+	private List<Config> userList = new ArrayList<>();
 
 	@Autowired
-	private UserRepository userRepository;
+	private ConfigRepository configRepository;
 
 	@Autowired
 	private WebApplicationContext webApplicationContext;
 
 	@Autowired
-	private RoleRepository roleRepository;
+	private ConfigRepository roleRepository;
 
 	@Autowired
 	void setConverters(HttpMessageConverter<?>[] converters) {
@@ -72,13 +71,12 @@ public class UserRestControllerTest {
 	public void setup() throws Exception {
 		this.mockMvc = webAppContextSetup(webApplicationContext).build();
 
-		this.userRepository.deleteAll();
-		;
+		this.configRepository.deleteAll();
 		this.roleRepository.deleteAll();
 
-		this.user = userRepository.save(new User.UserBuilder("test", "script").build());
-		// this.userList = userRepository.save(new User());
-		this.role = roleRepository.save(new Role());
+		this.config = configRepository.save(new Config.ConfigBuilder("test", "script").build());
+		// this.userList = configRepository.save(new Config());
+		this.group = roleRepository.save(new Group.GroupBuilder("test", "test").build());
 	}
 
 	// @Test

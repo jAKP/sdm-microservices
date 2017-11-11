@@ -1,4 +1,4 @@
-package com.sdm_client.user.service;
+package com.sdm_client.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

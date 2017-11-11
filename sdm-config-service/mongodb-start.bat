@@ -1,0 +1,1 @@
+call D:\Users\apande35\work\tools\MongoDB\bin\mongod --dbpath D:\Users\apande35\work\tools\MongoDB\data\db\
